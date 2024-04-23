@@ -4,12 +4,16 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_gs3kj"]
 
-[node name="body" type="Node3D"]
+[node name="body" type="CSGBox3D"]
+size = Vector3(5, 5, 5)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+visible = false
 shape = SubResource("BoxShape3D_xmncu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_gs3kj")
+skeleton = NodePath("../CharacterBody3D")
