@@ -8,6 +8,9 @@ func _input(event):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			
+	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
+		get_tree().paused = false
 
 func on_draw_gizmos():
 	var size = 5000
@@ -22,6 +25,7 @@ var xr_interface: XRInterface
 var text_size = 30
 
 func _ready():
+	
 	custom_font = load("res://fonts/Hyperspace Bold.otf")
 	DebugDraw2D.config.text_custom_font = custom_font
 	DebugDraw2D.config.text_default_size = text_size
@@ -44,6 +48,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.get_frames_drawn() < 10:
+		#get_tree().paused = true
+		pass
+	
 	on_draw_gizmos()
 	# var g = _create_graph(&"FPS", true, false, DebugDrawGraph.TEXT_CURRENT | DebugDrawGraph.TEXT_AVG | DebugDrawGraph.TEXT_MAX | DebugDrawGraph.TEXT_MIN, &"", DebugDrawGraph.SIDE_BOTTOM, DebugDrawGraph.POSITION_LEFT_TOP if Engine.is_editor_hint() else DebugDrawGraph.POSITION_RIGHT_TOP, Vector2i(200, 80), custom_font)
 	var g = _create_graph(&"FPS", true, false, DebugDraw2DGraph.TEXT_CURRENT | DebugDraw2DGraph.TEXT_AVG | DebugDraw2DGraph.TEXT_MAX | DebugDraw2DGraph.TEXT_MIN, &"", DebugDraw2DGraph.SIDE_BOTTOM, DebugDraw2DGraph.POSITION_LEFT_TOP if Engine.is_editor_hint() else DebugDraw2DGraph.POSITION_RIGHT_TOP, Vector2i(500, 110), custom_font)

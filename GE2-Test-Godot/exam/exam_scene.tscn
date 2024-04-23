@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b26ra08yh7e5m"]
+[gd_scene load_steps=9 format=3 uid="uid://b26ra08yh7e5m"]
 
 [ext_resource type="Script" path="res://behaviors/root.gd" id="1_prfgg"]
+[ext_resource type="Script" path="res://exam/creature_generator.gd" id="2_sprl3"]
+[ext_resource type="PackedScene" uid="uid://b87x3qwmm0lv1" path="res://exam/head.tscn" id="3_024h4"]
+[ext_resource type="PackedScene" uid="uid://bq05lmrygse1s" path="res://exam/body.tscn" id="4_4ie35"]
 [ext_resource type="Script" path="res://behaviors/FPController.gd" id="5_8r2ni"]
 [ext_resource type="Environment" uid="uid://b5dnnkkpxo3qc" path="res://behaviors/seek_environment..tres" id="6_qamsj"]
 [ext_resource type="PackedScene" uid="uid://dc24oh4o5erhi" path="res://behaviors/SceneSwitcher.tscn" id="7_ybx0x"]
@@ -11,6 +14,9 @@
 script = ExtResource("1_prfgg")
 
 [node name="creature_generator" type="Node3D" parent="."]
+script = ExtResource("2_sprl3")
+headScn = ExtResource("3_024h4")
+bodyScn = ExtResource("4_4ie35")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
